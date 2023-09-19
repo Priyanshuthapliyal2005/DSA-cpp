@@ -115,10 +115,14 @@ int main()
     InserAtPosition(head,tail,1,2);
     print(head);
 
-    cout<<"head"<<head->data<<endl;
-    cout<<"tail"<<tail->data<<endl;
+    cout<<"head:"<<head->data<<endl;
+    cout<<"tail:"<<tail->data<<endl;
 
     deleteNode(5,head);
     print(head);
+
+    cout<<"head:"<<head->data<<endl;
+    cout<<"tail:"<<tail->data<<endl;
+
     return 0;
 }
