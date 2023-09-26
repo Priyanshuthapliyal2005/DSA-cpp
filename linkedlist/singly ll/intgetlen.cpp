@@ -26,6 +26,24 @@ void insert(node** head, int val) {
     }
 }
 
+int delete1(node** head){
+    if(*head==NULL){
+        cout<<"underflow"<<endl;
+        return -1;
+    }
+    else{
+        int t=(*head)->val;
+        if((*head)->next==NULL){
+            *head=NULL;
+        }
+        else{
+            node* temp=(*head)->next;
+            (*head)->next=NULL;
+            *head=temp;
+        }
+        return t;
+    }
+}
 
 void display(node* head) {
     node* curr = head;
@@ -56,6 +74,7 @@ int main() {
     insert(&head, 1);
     insert(&head, 2);
     insert(&head, 3);
+    delete1(&head);
     display(head);
     cout<<"\nlength of linked list:"<<getlen(head)<<endl;
     return 0;
