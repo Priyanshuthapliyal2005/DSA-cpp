@@ -87,7 +87,11 @@ int main() {
     insert(&head, 1);
     insert(&head, 2);
     insert(&head, 3);
-    delete1(&head);
+    insert(&head, 4);
+    insert(&head, 5);
+    insert(&head, 6);
+    insert(&head, 7);
+    //delete1(&head);//delete the first element
     display(head);
     revll(&head);
     display(head);
