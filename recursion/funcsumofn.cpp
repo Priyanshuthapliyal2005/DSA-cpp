@@ -1,17 +1,18 @@
 #include<iostream>
 using namespace std;
 
-int sumN(int i) {
+void sumN(int i, int sum) {
     if (i == 0) {
-        return 0;
+        cout << "Sum of first " << i << " numbers: " << sum;
+        return;
     }
-    return i+sumN(i-1);
+    sumN(i - 1, sum + i);
 }
 
 int main() {
     int n;
     cout << "Enter first N numbers:";
     cin >> n;
-    cout<<"sum of first "<<n<<" numbers is:"<<sumN(n);
+    sumN(n, 0);
     return 0;
 }
