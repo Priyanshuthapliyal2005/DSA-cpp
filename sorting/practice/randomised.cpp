@@ -3,6 +3,7 @@ using namespace std;
 
 
 int partition(vector<int> &v,int low,int high){
+    srand(time(NULL));
     int RandomIndex=low + rand() % (high - low + 1);
     swap(v[low],v[RandomIndex]);
     int pivot=v[low];
