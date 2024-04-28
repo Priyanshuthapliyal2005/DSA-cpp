@@ -95,11 +95,13 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+template<typename T>
+
 class Graph {
 public:
-    unordered_map<int, list<pair<int,int>>> adjList;
+    unordered_map<T, list<pair<T,T>>> adjList;
 
-    void addEdge(int u, int v,int wt, bool isDirected) {
+    void addEdge(T u, T v,T wt, bool isDirected) {
         //directed=0 : undirected
         //directed=1 -> directed 
 
@@ -117,7 +119,7 @@ public:
     void printGraph() {
         for (auto i:adjList){
             cout<< i.first<< ": {";
-            for(pair<int,int> p :i.second){
+            for(pair<T,T> p :i.second){
                 cout<<"{"<<p.first<<","<<p.second<<"},";
 
             }
@@ -127,7 +129,7 @@ public:
 };
 
 int main() {
-    Graph g;
+    Graph<int> g;
     g.addEdge(0,1,5,0);
     g.addEdge(1,2,10,0);
     g.addEdge(1,3,20,0);
