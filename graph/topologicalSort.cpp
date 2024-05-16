@@ -45,6 +45,58 @@ vector<int> topologicalSort(vector<vector<int>> &edges, int V, int e){
     return ans;
 }
 
+vector<int> topologicalSortbfs(vector<vector<int>> &edges, int V, int e){
+    unordered_map<int,list<int>>adj;
+
+    //create adj list 
+    for(int i=0;i<e;i++){
+        int u=edges[i][0];
+        int v=edges[i][1];
+        adj[u].push_back(v);
+    }
+
+    //indegree array
+    vector<int>indegree(V,0);
+    for(auto i : adj){
+        for (auto j : i.second){
+            indegree[j]++;
+        }
+    }
+
+    //queue for bfs
+    queue<int>q;
+
+    //0 indegree wale ko push kr do 
+    for(int i=0;i<V;i++){
+        if(indegree[i]==0){
+            q.push(i);
+        }
+    }
+
+    //abb baki element ko push kreneg 
+    vector<int>ans;
+    for(int i=0;i<V;i++){
+        if(q.empty()){
+            return {};
+        }
+        int node=q.front();
+        q.pop();
+
+        ans.push_back(node);
+
+        for(auto i :adj[node]){
+            indegree[i]--;
+            if(indegree[i]==0){
+                q.push(i);
+            }
+        }
+    }
+
+    return ans;
+
+}
+
+
 int main()
 {
     // Example: Creating a graph and calling topological sort function
@@ -60,6 +112,7 @@ int main()
 
     // Performing topological sort
     vector<int> sorted_order = topologicalSort(edges, V, e);
+    // vector<int> sorted_order = topologicalSortbfs(edges, V, e);
 
     // Outputting the sorted order
     cout << "Topological Sort Order: ";
